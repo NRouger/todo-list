@@ -1,7 +1,15 @@
+.cards-grid {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 6rem;
+}
+
 .card-item {
   display: flex;
   justify-content: space-between;
   text-align: center;
+  align-items: center;
   margin: 25px;
   padding: 15px;
   border: 1px solid #ffffff57;
@@ -25,26 +33,11 @@
   vertical-align: baseline;
   width: auto;
   cursor: pointer;
+  p {
+    margin-bottom: 0;
+  }
 }
 
-.card-item:hover,
-.card-item:focus {
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: rgba(255, 255, 255, 0.866);
-}
-
-.-card-item:hover {
-  transform: translateY(-1px);
-}
-
-.card-item:active {
-  background-color: #7b5affa6;
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-  color: rgba(255, 255, 255, 0.525);
-  transform: translateY(0);
-}
 
 
 .card-search {
@@ -59,4 +52,14 @@
   color: #ffffffae;
   box-shadow: #37373757 ;
   box-shadow: 5px 5px 20px -10px rgba(0, 0, 0, 0.772);
+}
+
+.cards--list {
+  display: inline-block;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.ul-list {
+  list-style-type: none;
 }

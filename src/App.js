@@ -3,9 +3,8 @@ import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
 import { CreateTodoButton } from './CreateTodoButton';
-import './cardsGrid.css'
 import './fonts.css'
-import './createBar.css'
+import './searchBar.css'
 import React from 'react';
 
 const defaultTodos = [
@@ -17,27 +16,29 @@ const defaultTodos = [
 function App() {
   return (
     <>
-      <div className='cards-grid'>
-        <div className='grid-search card-search'>
-          <h1>Add something you'd like <br/> to get done</h1>
-          <TodoSearch />
-          <CreateTodoButton />
-        </div>
-        <div className='grid-list'>
-          <TodoCounter completed={16} total={25} />
-          <TodoList>
-          {/* lo llamamos como si fuese un elemento */}
-            {defaultTodos.map(todo => (
-              <TodoItem
-                // todoItem renderiza con <p> el texto de nuestro
-                // array 'defaultTodo' através de .map las props
-                key={todo.text}
-                text={todo.text}
-                completed={todo.completed}
-              />
-            ))}
-          {/*primero creamos la estructura, llamamos y despues creamos los componentes uno por uno*/}
-          </TodoList>
+      <div className='container'>
+        <div className='cards-grid'>
+          <div className='card-search grid-search'>
+            <h1>Add something you'd like <br/>to get done</h1>
+            <TodoSearch />
+            <CreateTodoButton />
+          </div>
+          <div className='cards--list'>
+            <TodoCounter completed={16} total={25} />
+            <TodoList>
+            {/* lo llamamos como si fuese un elemento */}
+              {defaultTodos.map(todo => (
+                <TodoItem
+                  // todoItem renderiza con <p> el texto de nuestro
+                  // array 'defaultTodo' através de .map las props
+                  key={todo.text}
+                  text={todo.text}
+                  completed={todo.completed}
+                />
+              ))}
+            {/*primero creamos la estructura, llamamos y despues creamos los componentes uno por uno*/}
+            </TodoList>
+          </div>
         </div>
       </div>
     </>

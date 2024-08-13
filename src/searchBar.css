@@ -1,0 +1,12 @@
+.search-bar {
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 5px 20px;
+  font-size: thin;
+  margin: 15px 0;
+}
+
+.search-bar::content {
+  border: 1px solid rgb(89, 0, 255);
+  border-inline-color: rgb(89, 0, 255) ;
+}

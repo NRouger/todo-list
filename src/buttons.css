@@ -1,18 +1,18 @@
 /* CSS */
-.button-6 {
+.CreateTodoButton {
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   background-color: #623bff;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: .25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
   color: rgba(255, 255, 255, 0.88);
-  cursor: pointer;
-  display: inline-flex;
-  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  justify-content: center;
+  /* cursor: pointer; */
   line-height: 1.25;
   margin: 0;
   min-height: 3rem;
@@ -27,21 +27,62 @@
   width: auto;
 }
 
-.button-6:hover,
-.button-6:focus {
+.CreateTodoButton:hover,
+.CreateTodoButton:focus {
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
   color: rgba(255, 255, 255, 0.866);
 }
 
-.button-6:hover {
+.CreateTodoButton:hover {
   transform: translateY(-1px);
 }
 
-.button-6:active {
+.CreateTodoButton:active {
   background-color: #7b5affa6;
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(255, 255, 255, 0.525);
   transform: translateY(0);
+}
+
+.Todo-button {
+  border: 0.5px solid whitesmoke;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #dbd9de68;
+  cursor: pointer;
+}
+
+.Todo-button:hover,
+.Todo-button:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(255, 255, 255, 0.866);
+}
+
+.Todo-button:hover {
+  transform: translateY(-1px);
+}
+
+.Todo-button:active {
+  background-color: #7b5affa6;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(255, 255, 255, 0.525);
+  transform: translateY(0);
+}
+
+.Todo-button--completed {
+  border: 0.5px solid whitesmoke;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #6a07ff9a;
+  cursor: pointer;
+}
+
+.strike-through {
+  text-decoration: line-through;
 }

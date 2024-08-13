@@ -3,12 +3,9 @@ import './buttons.css'
 function CreateTodoButton() {
   return (
     <div>
-      <button type="button" class="button-6">Create</button>
-
+      <button type="button" className="CreateTodoButton">Create</button>
     </div>
   )
 };
 
 export { CreateTodoButton };
-
-// <!-- HTML !-->
