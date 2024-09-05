@@ -1,3 +1,5 @@
+import React from 'react';
+import { useState } from 'react';
 import { TodoCounter } from './TodoCounter';
 import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoList';
@@ -5,35 +7,83 @@ import { TodoItem } from './TodoItem';
 import { CreateTodoButton } from './CreateTodoButton';
 import './fonts.css'
 import './searchBar.css'
-import React from 'react';
+
 
 const defaultTodos = [
-  { text: 'cortar cebolla', completed: false },
-  { text: 'tomar el curso de react', completed: false },
+  { text: 'cortar cebolla', completed: true },
+  { text: 'tomar el curso de react', completed: true },
   { text: 'estudiar react', completed: false },
-  { text: 'cortarme el pelo', completed: false }];
+  { text: 'usar estados derivados', completed: true },
+  { text: 'cortarme el pelo', completed: false }
+];
+
 
 function App() {
+  const [todos, setTodos] = React.useState(defaultTodos);
+  const [searchValue, setSearchValue] = React.useState('');
+
+  const completedTodos = todos.filter(
+    todo => !!todo.completed //!! doble negacion convierte en booleano el valor
+  ).length;
+  console.log(completedTodos)
+
+  const totalTodos = todos.length;
+
+  const searchedTodos = todos.filter(
+    (todo) => {
+      const todoText = todo.text.toLowerCase();
+      const searchText = searchValue.toLowerCase();
+      return todoText.includes(searchText)
+    }
+  );
+
+  const completeTodo = (text) => { //funcion que espera texto como parametro
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text === text
+    )
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+    setTodos(newTodos);
+  }
+
+  const deleteTodo = (text) => { // funcion que espera etexto como parametro para cambiar el valor booleano del segundo elemento del array
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text === text //busco a traves del index y valido el texto
+    )
+    newTodos.splice(todoIndex, 1) //marco el elemento como falso
+    setTodos(newTodos) //set del nuevo estado
+  }
+
   return (
     <>
       <div className='container'>
         <div className='cards-grid'>
           <div className='card-search grid-search'>
-            <h1>Add something you'd like <br/>to get done</h1>
-            <TodoSearch />
+            <h1>Add something you'd like <br/>to get done, or search for it</h1>
+            <TodoSearch
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+            />
             <CreateTodoButton />
           </div>
           <div className='cards--list'>
-            <TodoCounter completed={16} total={25} />
+            <TodoCounter
+              completed={completedTodos}
+              total={totalTodos}
+              />
             <TodoList>
             {/* lo llamamos como si fuese un elemento */}
-              {defaultTodos.map(todo => (
+              {searchedTodos.map(todo => (
                 <TodoItem
                   // todoItem renderiza con <p> el texto de nuestro
                   // array 'defaultTodo' através de .map las props
                   key={todo.text}
                   text={todo.text}
                   completed={todo.completed}
+                  onComplete={() => completeTodo(todo.text)}
+                  onDelete={() => deleteTodo(todo.text)}
+                  // onC y onD a través de una función cambio el valor booleano de sus elementos y esto cambia su conteo luego
                 />
               ))}
             {/*primero creamos la estructura, llamamos y despues creamos los componentes uno por uno*/}

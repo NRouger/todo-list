@@ -2,9 +2,14 @@ import './TodoCounter.css';
 
 function TodoCounter({ total, completed }) {
   return (
-    <h1>
-      Has completado {completed} de {total} TODOs
-    </h1>
+    total === completed ?
+
+    <h1>¡Has completado todas tus tareas!</h1>
+
+    :
+
+    <h1>Has completado {completed} de {total} TODOs</h1>
+
   )
 }
 
