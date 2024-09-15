@@ -7,20 +7,24 @@ function TodoItem(props) {
   return (
     <li>
       <div className="card-item">
-        <CompleteIcon
-          className="Todo-button"
-          completed={props.completed}
-          onComplete={props.onComplete}
-        />
-
-        <p
-         className={`card-text ${props.completed ? 'strike-through' : ''}`}>
-          {props.text}
-        </p>
-
-        <DeleteIcon
-          onDelete={props.onDelete}
-        />
+        <div>
+          <CompleteIcon
+            className="Todo-button"
+            completed={props.completed}
+            onComplete={props.onComplete}
+          />
+        </div>
+        <div>
+          <p
+           className={`card-text ${props.completed ? 'strike-through' : ''}`}>
+            {props.text}
+          </p>
+        </div>
+        <div>
+          <DeleteIcon
+            onDelete={props.onDelete}
+          />
+        </div>
       </div>
     </li>
   );

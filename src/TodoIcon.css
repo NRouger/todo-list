@@ -14,6 +14,7 @@
 .Icon-container-check {
   position: absolute;
   left: 12px;
+  top: 0px;
 }
 .Icon-container-check--active {
   color: #4caf50;

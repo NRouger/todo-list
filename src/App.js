@@ -8,18 +8,47 @@ import { CreateTodoButton } from './CreateTodoButton';
 import './fonts.css'
 import './searchBar.css'
 
+// const defaultTodos = [
+//   { text: 'cortar cebolla', completed: true },
+//   { text: 'tomar el curso de react', completed: true },
+//   { text: 'estudiar react', completed: false },
+//   { text: 'usar estados derivados', completed: true },
+//   { text: 'cortarme el pelo', completed: false }
+// ];
 
-const defaultTodos = [
-  { text: 'cortar cebolla', completed: true },
-  { text: 'tomar el curso de react', completed: true },
-  { text: 'estudiar react', completed: false },
-  { text: 'usar estados derivados', completed: true },
-  { text: 'cortarme el pelo', completed: false }
-];
+// localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
+// localStorage.removeItem('TODOS_V1')
+
+//LOCAL STORAGE
+function useLocalStorage(itemName, initialValue) {
+  const localStorageItem = localStorage.getItem(itemName);
+
+  let parsedItem;
+
+  if (!localStorageItem) {
+    //estado inicial app
+    localStorage.setItem(itemName, JSON.stringify(initialValue))
+    parsedItem = initialValue;
+  } else {
+    parsedItem = JSON.parse(localStorageItem)
+  }
+
+  const [item, setItem] = React.useState(parsedItem);
+
+  const saveItem = (newItem) => {
+    //actualizamos localStorage guardando nuevos Todos
+    localStorage.setItem(itemName, JSON.stringify(newItem));
+    //y actualizamos el ESTADO
+    setItem(newItem)
+  }
+
+  return [item, saveItem];
+}
 
 
 function App() {
-  const [todos, setTodos] = React.useState(defaultTodos);
+  //ESTADOS
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedTodos = todos.filter(
@@ -43,7 +72,7 @@ function App() {
       (todo) => todo.text === text
     )
     newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
-    setTodos(newTodos);
+    saveTodos(newTodos);
   }
 
   const deleteTodo = (text) => { // funcion que espera etexto como parametro para cambiar el valor booleano del segundo elemento del array
@@ -52,7 +81,7 @@ function App() {
       (todo) => todo.text === text //busco a traves del index y valido el texto
     )
     newTodos.splice(todoIndex, 1) //marco el elemento como falso
-    setTodos(newTodos) //set del nuevo estado
+    saveTodos(newTodos) //set del nuevo estado
   }
 
   return (
