@@ -1,12 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
-import { TodoCounter } from './TodoCounter';
-import { TodoSearch } from './TodoSearch';
-import { TodoList } from './TodoList';
-import { TodoItem } from './TodoItem';
-import { CreateTodoButton } from './CreateTodoButton';
-import './fonts.css'
-import './searchBar.css'
+import { AppUI } from './AppUI';
+import { useLocalStorage } from './useLocalStorage';
 
 // const defaultTodos = [
 //   { text: 'cortar cebolla', completed: true },
@@ -19,36 +13,14 @@ import './searchBar.css'
 // localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
 // localStorage.removeItem('TODOS_V1')
 
-//LOCAL STORAGE
-function useLocalStorage(itemName, initialValue) {
-  const localStorageItem = localStorage.getItem(itemName);
-
-  let parsedItem;
-
-  if (!localStorageItem) {
-    //estado inicial app
-    localStorage.setItem(itemName, JSON.stringify(initialValue))
-    parsedItem = initialValue;
-  } else {
-    parsedItem = JSON.parse(localStorageItem)
-  }
-
-  const [item, setItem] = React.useState(parsedItem);
-
-  const saveItem = (newItem) => {
-    //actualizamos localStorage guardando nuevos Todos
-    localStorage.setItem(itemName, JSON.stringify(newItem));
-    //y actualizamos el ESTADO
-    setItem(newItem)
-  }
-
-  return [item, saveItem];
-}
-
-
 function App() {
   //ESTADOS
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage('TODOS_V1', []);
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedTodos = todos.filter(
@@ -85,42 +57,19 @@ function App() {
   }
 
   return (
-    <>
-      <div className='container'>
-        <div className='cards-grid'>
-          <div className='card-search grid-search'>
-            <h1>Add something you'd like <br/>to get done, or search for it</h1>
-            <TodoSearch
-              searchValue={searchValue}
-              setSearchValue={setSearchValue}
-            />
-            <CreateTodoButton />
-          </div>
-          <div className='cards--list'>
-            <TodoCounter
-              completed={completedTodos}
-              total={totalTodos}
-              />
-            <TodoList>
-            {/* lo llamamos como si fuese un elemento */}
-              {searchedTodos.map(todo => (
-                <TodoItem
-                  // todoItem renderiza con <p> el texto de nuestro
-                  // array 'defaultTodo' através de .map las props
-                  key={todo.text}
-                  text={todo.text}
-                  completed={todo.completed}
-                  onComplete={() => completeTodo(todo.text)}
-                  onDelete={() => deleteTodo(todo.text)}
-                  // onC y onD a través de una función cambio el valor booleano de sus elementos y esto cambia su conteo luego
-                />
-              ))}
-            {/*primero creamos la estructura, llamamos y despues creamos los componentes uno por uno*/}
-            </TodoList>
-          </div>
-        </div>
-      </div>
-    </>
+    //return de componente appUI donde tengo los demas componentes
+    //agrego key-props a appui para recibir porps en mismo componebnte
+    <AppUI
+    loading={loading}
+    error={error}
+    completedTodos={completedTodos}
+    totalTodos={totalTodos}
+    searchValue={searchValue}
+    setSearchValue={setSearchValue}
+    searchedTodos={searchedTodos}
+    completeTodo={completeTodo}
+    deleteTodo={deleteTodo}
+    />
   );
 }
 
