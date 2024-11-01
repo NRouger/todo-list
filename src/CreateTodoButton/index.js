@@ -1,19 +1,27 @@
+import React from 'react'
+import { TodoContext } from '../TodoContext'
 import './CreateTodoButtons.css'
+import { ModalStyled } from '../Modal/ModalBootstrap'
 
 function CreateTodoButton() {
+  const {
+    toggleModal
+  } = React.useContext(TodoContext)
+
   return (
-    <div>
+    <div className='button-grid'>
       <button
-      type="button"
-      className="CreateTodoButton"
-      onClick={
-        (event) => {
-          console.log('click click')
-          console.log(event)
-          console.log(event.target)
+        type="button"
+        className="CreateTodoButton"
+        onClick={
+          (event) => {
+            toggleModal()
+          }
         }
-      }
-      >+</button>
+      >
+        <i class="fa-solid fa-plus"></i>
+      </button>
+
     </div>
   )
 };

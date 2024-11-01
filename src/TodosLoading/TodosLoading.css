@@ -1,0 +1,9 @@
+.TodosLoading {
+  width: 30em;
+  /* height: 20px; */
+  justify-content: center;
+}
+
+.TodosLoading span {
+  height: 5rem;
+}

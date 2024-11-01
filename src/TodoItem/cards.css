@@ -31,7 +31,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: baseline;
-  width: auto;
+  width: 28em;
   cursor: pointer;
   p {
     margin-bottom: 0;

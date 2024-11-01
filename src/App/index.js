@@ -1,75 +1,13 @@
 import React from 'react';
 import { AppUI } from './AppUI';
-import { useLocalStorage } from './useLocalStorage';
-
-// const defaultTodos = [
-//   { text: 'cortar cebolla', completed: true },
-//   { text: 'tomar el curso de react', completed: true },
-//   { text: 'estudiar react', completed: false },
-//   { text: 'usar estados derivados', completed: true },
-//   { text: 'cortarme el pelo', completed: false }
-// ];
-
-// localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
-// localStorage.removeItem('TODOS_V1')
+import { TodoProvider } from '../TodoContext/index';
 
 function App() {
-  //ESTADOS
-  const {
-    item: todos,
-    saveItem: saveTodos,
-    loading,
-    error,
-  } = useLocalStorage('TODOS_V1', []);
-  const [searchValue, setSearchValue] = React.useState('');
-
-  const completedTodos = todos.filter(
-    todo => !!todo.completed //!! doble negacion convierte en booleano el valor
-  ).length;
-  console.log(completedTodos)
-
-  const totalTodos = todos.length;
-
-  const searchedTodos = todos.filter(
-    (todo) => {
-      const todoText = todo.text.toLowerCase();
-      const searchText = searchValue.toLowerCase();
-      return todoText.includes(searchText)
-    }
-  );
-
-  const completeTodo = (text) => { //funcion que espera texto como parametro
-    const newTodos = [...todos];
-    const todoIndex = newTodos.findIndex(
-      (todo) => todo.text === text
-    )
-    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
-    saveTodos(newTodos);
-  }
-
-  const deleteTodo = (text) => { // funcion que espera etexto como parametro para cambiar el valor booleano del segundo elemento del array
-    const newTodos = [...todos];
-    const todoIndex = newTodos.findIndex(
-      (todo) => todo.text === text //busco a traves del index y valido el texto
-    )
-    newTodos.splice(todoIndex, 1) //marco el elemento como falso
-    saveTodos(newTodos) //set del nuevo estado
-  }
 
   return (
-    //return de componente appUI donde tengo los demas componentes
-    //agrego key-props a appui para recibir porps en mismo componebnte
-    <AppUI
-    loading={loading}
-    error={error}
-    completedTodos={completedTodos}
-    totalTodos={totalTodos}
-    searchValue={searchValue}
-    setSearchValue={setSearchValue}
-    searchedTodos={searchedTodos}
-    completeTodo={completeTodo}
-    deleteTodo={deleteTodo}
-    />
+    <TodoProvider>
+      <AppUI />
+    </TodoProvider>
   );
 }
 

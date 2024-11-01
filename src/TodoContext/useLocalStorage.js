@@ -26,7 +26,8 @@ function useLocalStorage(itemName, initialValue) {
         setError(true)
       }
 
-    }, 1000);
+    }, 2000);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []) //cuando no hay un array como dependencia, al estar llamando a estados
      //se va a seguir renderizando en un loop, por lo cuale s importante
      // agregar un array vacio
@@ -48,3 +49,14 @@ function useLocalStorage(itemName, initialValue) {
 }
 
 export { useLocalStorage };
+
+// const defaultTodos = [
+//   { text: 'cortar cebolla', completed: true },
+//   { text: 'tomar el curso de react', completed: true },
+//   { text: 'estudiar react', completed: false },
+//   { text: 'usar estados derivados', completed: true },
+//   { text: 'cortarme el pelo', completed: false }
+// ];
+
+// localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
+// localStorage.removeItem('TODOS_V1')

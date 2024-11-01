@@ -1,10 +1,13 @@
 import React from "react";
+import { TodoContext } from "../TodoContext/index";
 import { useState } from "react";
 
-function TodoSearch({
-  searchValue,
-  setSearchValue // props destructuradas
-}) {
+function TodoSearch() {
+  const {
+    searchValue,
+    setSearchValue,
+  } = React.useContext(TodoContext)
+
   return (
     <input
       placeholder="Practicar con react.js"
