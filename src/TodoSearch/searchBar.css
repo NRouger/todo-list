@@ -1,7 +1,8 @@
 .search-bar {
-  border: 1px solid white;
+  border: 1px solid rgb(198, 195, 195);
+  background-color: rgba(255, 255, 255, 0.164);
   border-radius: 20px;
-  padding: 5px 20px;
+  padding: 10px 15vw;
   font-size: thin;
   margin: 15px 0;
 }
@@ -10,3 +11,4 @@
   border: 1px solid rgb(89, 0, 255);
   border-inline-color: rgb(89, 0, 255) ;
 }
+

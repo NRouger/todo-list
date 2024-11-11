@@ -10,7 +10,7 @@ function TodoSearch() {
 
   return (
     <input
-      placeholder="Practicar con react.js"
+      placeholder="Practicar react.js"
       className="search-bar"
       value={searchValue}
       onChange={(event) => {

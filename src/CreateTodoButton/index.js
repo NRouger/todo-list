@@ -1,26 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { TodoContext } from '../TodoContext'
 import './CreateTodoButtons.css'
-import { ModalStyled } from '../Modal/ModalBootstrap'
 
 function CreateTodoButton() {
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true)
+    }, 2000);
+
+    return () => clearTimeout(timer);
+
+  }, []);
+
   const {
     toggleModal
   } = React.useContext(TodoContext)
 
   return (
     <div className='button-grid'>
-      <button
-        type="button"
-        className="CreateTodoButton"
-        onClick={
-          (event) => {
-            toggleModal()
+      {isVisible && (
+        <button
+          type="button"
+          className="CreateTodoButton"
+          onClick={
+            (event) => {
+              toggleModal()
+            }
           }
-        }
-      >
-        <i class="fa-solid fa-plus"></i>
-      </button>
+        >
+          <i className="fa-solid fa-plus"></i>
+        </button>
+      )}
 
     </div>
   )

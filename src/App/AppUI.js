@@ -11,8 +11,9 @@ import { TodosLoading } from '../TodosLoading/TodosLoading';
 import { CreateTodoButton } from '../CreateTodoButton';
 import '../TodoSearch/searchBar.css'
 import { Modal } from '../Modal';
+// import { ModalBootstrap } from '../Modal/ModalBootstrap';
+import { TodoForm } from "../TodoForm";
 import { TodoContext } from '../TodoContext';
-import { ModalBootstrap } from '../Modal/ModalBootstrap';
 
 function AppUI() {
   const {
@@ -29,12 +30,13 @@ function AppUI() {
     <>
       <div className='container'>
         <div className='cards-grid'>
+          <h1><strong>Too many tasks? Search here</strong></h1>
           <div className='card-search grid-search'>
-            <h1>Add something you'd like <br/>to get done, or search for it</h1>
             <TodoSearch />
           </div>
           <div className='cards--list'>
-            <TodoCounter />
+            <div className='cards--grid-list'>
+              <TodoCounter />
                 <TodoList>
                 {loading && <TodosLoading/>}
                 {error && <p>Hubo un error.</p>}
@@ -51,13 +53,16 @@ function AppUI() {
               {/*primero creamos la estructura, llamamos y despues creamos los componentes uno por uno*/}
               </TodoList>
 
-              <CreateTodoButton />
-              
+              <CreateTodoButton
+                setOpenModal={setOpenModal}
+              />
+
               {openModal && (
-                <ModalBootstrap>
-                  La funcionalidad de agregar todos
-                </ModalBootstrap>
+                <Modal>
+                  <TodoForm />
+                </Modal>
               )}
+            </div>
           </div>
         </div>
       </div>

@@ -1,8 +1,13 @@
 .cards-grid {
-  display: flex;
+  display: block;
   justify-content: space-around;
   align-items: center;
   padding-top: 6rem;
+}
+
+.card-search {
+  justify-content: center;
+  text-align: center;
 }
 
 .card-item {
@@ -11,7 +16,6 @@
   text-align: center;
   align-items: center;
   margin: 25px;
-  padding: 15px;
   border: 1px solid #ffffff57;
   border-radius: 5px;
   background-color: #ffffff57;
@@ -31,35 +35,25 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: baseline;
-  width: 28em;
+  width: 50vw;
   cursor: pointer;
   p {
     margin-bottom: 0;
   }
 }
 
-
-
-.card-search {
-  display: block;
-  justify-content: space-between;
-  text-align: center;
-  margin: 25px;
-  padding: 5rem;
-  border: 1px solid #ffffff57;
-  border-radius: 5px;
-  background-color: #ffffff57;
-  color: #ffffffae;
-  box-shadow: #37373757 ;
-  box-shadow: 5px 5px 20px -10px rgba(0, 0, 0, 0.772);
-}
-
 .cards--list {
-  display: inline-block;
+  display: grid;
   justify-content: space-around;
   align-items: center;
 }
 
 .ul-list {
   list-style-type: none;
+}
+
+@media (max-width: 768px) {
+  .card-item {
+    width: 80vw;
+  }
 }

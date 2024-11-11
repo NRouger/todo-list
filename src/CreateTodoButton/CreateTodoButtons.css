@@ -2,7 +2,7 @@
 .button-grid {
   display: flex;
   justify-content: right;
-  position: absolute;
+  position: relative;
 }
 .CreateTodoButton {
   display: inline-flex;
@@ -11,10 +11,7 @@
   box-sizing: border-box;
   color: rgba(255, 255, 255, 0.88);
   margin: 0;
-  position: relative;
   transition: all 250ms;
-  user-select: none;
-  -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: baseline;
   background-color: #623bff;
@@ -31,6 +28,7 @@
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
   color: rgba(255, 255, 255, 0.866);
+  background-color: #704dff;
 }
 
 .CreateTodoButton:hover {
@@ -75,4 +73,48 @@
 
 .strike-through {
   text-decoration: line-through;
+}
+
+@media (max-width: 480px) {
+  /* Estilos específicos */
+  .button-grid {
+    bottom: -1rem;
+    right: -4rem;
+  }
+}
+
+/* Pantallas pequeñas (teléfonos grandes en orientación vertical y pequeñas en horizontal) */
+@media (max-width: 768px) {
+  /* Estilos específicos */
+  .button-grid {
+    bottom: -3rem;
+    right: 2rem;
+  }
+}
+
+/* Pantallas medianas (tablets) */
+@media (min-width: 768px) {
+  /* Estilos específicos */
+  .button-grid {
+    bottom: -4rem;
+    right: -9rem;
+  }
+}
+
+/* Pantallas grandes (laptops y tablets en horizontal) */
+@media (min-width: 1024px) {
+  /* Estilos específicos */
+  .button-grid {
+    bottom: -4rem;
+    right: -11rem;
+  }
+}
+
+/* Pantallas extra grandes (desktops) */
+@media (min-width: 1200px) {
+  /* Estilos específicos */
+  .button-grid {
+    bottom: -4rem;
+    right: -12rem;
+  }
 }

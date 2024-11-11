@@ -33,6 +33,15 @@ function TodoProvider({ children }) {
       }
     );
 
+    const addTodo = (text) => {
+      const newTodos = [...todos];
+      newTodos.push({
+        text,
+        completed: false,
+      })
+      saveTodos(newTodos);
+    };
+
     const completeTodo = (text) => { //funcion que espera texto como parametro
       const newTodos = [...todos];
       const todoIndex = newTodos.findIndex(
@@ -64,6 +73,7 @@ function TodoProvider({ children }) {
       openModal,
       setOpenModal,
       toggleModal,
+      addTodo,
     }}>
       {children}
     </TodoContext.Provider>

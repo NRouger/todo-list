@@ -1,4 +1,4 @@
-.modal-bs {
+.ModalBackground {
   color: rgb(61, 61, 61);
   box-sizing: border-box;
   position: fixed;
@@ -12,6 +12,7 @@
   background-color: rgba(55, 49, 60, 0.6);
   backdrop-filter: blur(8px);
   animation: fadein 2s;
+  padding-left: 5px;
 
   @keyframes fadein {
     from {
