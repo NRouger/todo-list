@@ -15,7 +15,7 @@ function CreateTodoButton() {
   }, []);
 
   const {
-    toggleModal
+    toggleModal,
   } = React.useContext(TodoContext)
 
   return (
@@ -25,7 +25,7 @@ function CreateTodoButton() {
           type="button"
           className="CreateTodoButton"
           onClick={
-            (event) => {
+            (e) => {
               toggleModal()
             }
           }

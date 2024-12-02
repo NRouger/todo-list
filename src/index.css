@@ -10,8 +10,9 @@ body {
   color: rgba(245, 245, 245, 0.856);
   /* background: rgb(20,13,149);
   background: linear-gradient(90deg, rgba(20,13,149,1) 0%, rgba(9,21,121,1) 39%, rgba(116,0,255,1) 100%); */
-  background: rgb(20,13,149);
-  background: linear-gradient(90deg, rgba(20,13,149,0.9531615925058547) 0%, rgba(9,21,121,1) 39%, rgba(116,0,255,1) 100%);
+  background: #1F1F1F;
+  /* background: linear-gradient(90deg, rgba(20,13,149,0.9531615925058547) 0%, rgba(9,21,121,1) 39%, rgba(116,0,255,1) 100%);
+   */
 }
 
 code {

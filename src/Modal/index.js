@@ -5,10 +5,10 @@ import "../Modal/Modal.css"
 
 function Modal({children}){
 
-  const {
-    openModal,
-    toggleModal
-  } = React.useContext(TodoContext)
+  // const {
+  //   openModal,
+  //   toggleModal
+  // } = React.useContext(TodoContext)
 
   return ReactDOM.createPortal(
     // primer div es el background modal,

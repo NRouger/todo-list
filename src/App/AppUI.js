@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-unused-vars
 import { useState } from 'react';
+import { useContext } from 'react';
 import { TodoCounter } from '../TodoCounter';
 import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
@@ -57,6 +58,7 @@ function AppUI() {
                 setOpenModal={setOpenModal}
               />
 
+              
               {openModal && (
                 <Modal>
                   <TodoForm />

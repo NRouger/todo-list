@@ -68,12 +68,12 @@ function TodoProvider({ children }) {
       searchValue,
       setSearchValue,
       searchedTodos,
+      addTodo,
       completeTodo,
       deleteTodo,
       openModal,
       setOpenModal,
       toggleModal,
-      addTodo,
     }}>
       {children}
     </TodoContext.Provider>
