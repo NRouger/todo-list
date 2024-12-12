@@ -15,6 +15,8 @@ import { Modal } from '../Modal';
 // import { ModalBootstrap } from '../Modal/ModalBootstrap';
 import { TodoForm } from "../TodoForm";
 import { TodoContext } from '../TodoContext';
+import GradientBackground from '../GradientBackground/GradientBackground';
+
 
 function AppUI() {
   const {
@@ -29,45 +31,45 @@ function AppUI() {
 
   return (
     <>
+    {/* <GradientBackground /> */}
       <div className='container'>
-        <div className='cards-grid'>
-          <h1><strong>Too many tasks? Search here</strong></h1>
-          <div className='card-search grid-search'>
-            <TodoSearch />
-          </div>
-          <div className='cards--list'>
-            <div className='cards--grid-list'>
-              <TodoCounter />
-                <TodoList>
-                {loading && <TodosLoading/>}
-                {error && <p>Hubo un error.</p>}
-                {(!loading && searchedTodos.length === 0) && <p>Crea tu primer TODO</p>}
-                {searchedTodos.map(todo => (
-                  <TodoItem
-                  key={todo.text}
-                  text={todo.text}
-                  completed={todo.completed}
-                  onComplete={() => completeTodo(todo.text)}
-                  onDelete={() => deleteTodo(todo.text)}
-                  />
-                ))}
-              {/*primero creamos la estructura, llamamos y despues creamos los componentes uno por uno*/}
-              </TodoList>
+          <div className='cards-grid'>
+            <h1><strong>Too many tasks? Search here</strong></h1>
+            <div className='card-search grid-search'>
+              <TodoSearch />
+            </div>
+            <div className='cards--list'>
+              <div className='cards--grid-list'>
+                <TodoCounter />
+                  <TodoList>
+                  {loading && <TodosLoading/>}
+                  {error && <p>Hubo un error.</p>}
+                  {(!loading && searchedTodos.length === 0) && <p>Crea tu primer TODO</p>}
+                  {searchedTodos.map(todo => (
+                    <TodoItem
+                    key={todo.text}
+                    text={todo.text}
+                    completed={todo.completed}
+                    onComplete={() => completeTodo(todo.text)}
+                    onDelete={() => deleteTodo(todo.text)}
+                    />
+                  ))}
+                {/*primero creamos la estructura, llamamos y despues creamos los componentes uno por uno*/}
+                </TodoList>
+              </div>
+                <CreateTodoButton
+                  setOpenModal={setOpenModal}
+                />
 
-              <CreateTodoButton
-                setOpenModal={setOpenModal}
-              />
 
-              
-              {openModal && (
-                <Modal>
-                  <TodoForm />
-                </Modal>
-              )}
+                {openModal && (
+                  <Modal>
+                    <TodoForm />
+                  </Modal>
+                )}
             </div>
           </div>
-        </div>
-      </div>
+      </  div>
     </>
   )
 }

@@ -1,20 +1,21 @@
 /* CSS */
 .button-grid {
-  display: flex;
-  justify-content: right;
-  position: relative;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
 }
+
 .CreateTodoButton {
   display: inline-flex;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
+  background-color: #623bff;
   color: rgba(255, 255, 255, 0.88);
-  margin: 0;
   transition: all 250ms;
   touch-action: manipulation;
   vertical-align: baseline;
-  background-color: #623bff;
   font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
   border: 1px solid rgba(0, 0, 0, 0.1);
   font-weight: 400;
@@ -73,48 +74,4 @@
 
 .strike-through {
   text-decoration: line-through;
-}
-
-@media (max-width: 480px) {
-  /* Estilos específicos */
-  .button-grid {
-    bottom: -1rem;
-    right: -4rem;
-  }
-}
-
-/* Pantallas pequeñas (teléfonos grandes en orientación vertical y pequeñas en horizontal) */
-@media (max-width: 768px) {
-  /* Estilos específicos */
-  .button-grid {
-    bottom: -3rem;
-    right: 2rem;
-  }
-}
-
-/* Pantallas medianas (tablets) */
-@media (min-width: 768px) {
-  /* Estilos específicos */
-  .button-grid {
-    bottom: -4rem;
-    right: -9rem;
-  }
-}
-
-/* Pantallas grandes (laptops y tablets en horizontal) */
-@media (min-width: 1024px) {
-  /* Estilos específicos */
-  .button-grid {
-    bottom: -4rem;
-    right: -11rem;
-  }
-}
-
-/* Pantallas extra grandes (desktops) */
-@media (min-width: 1200px) {
-  /* Estilos específicos */
-  .button-grid {
-    bottom: -4rem;
-    right: -12rem;
-  }
 }
